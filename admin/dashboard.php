@@ -40,19 +40,11 @@ $result = $conn->query($sql);
 $total = $result->fetch_assoc()["total"];
 
 /* Recent requests */
-$sql = "SELECT
-            overtime_records.date,
-            overtime_records.hours,
-            overtime_records.amount,
-            overtime_records.status,
-            users.name
-        FROM overtime_records
-        JOIN employees
-            ON overtime_records.employee_id = employees.id
-        JOIN users
-            ON employees.user_id = users.id
-        ORDER BY overtime_records.id DESC
-        LIMIT 5";
+$sql = "SELECT o.*, u.name
+        FROM overtime_records o
+        JOIN employees e ON o.employee_id = e.id
+        JOIN users u ON e.user_id = u.id
+        ORDER BY o.date DESC";
 
 $recent = $conn->query($sql);
 
