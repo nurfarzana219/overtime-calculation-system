@@ -369,6 +369,46 @@ $user = $result->fetch_assoc();
 
                     </div>
 
+                    <!-- OVERTIME CALCULATION INFO -->
+
+<div class="overtime-calculation-box">
+
+    <div class="calculation-item">
+        <span>Monthly Salary</span>
+        <strong>
+            RM <?php echo number_format($employee["salary"], 2); ?>
+        </strong>
+    </div>
+
+    <div class="calculation-item">
+        <span>Basic Hourly Rate</span>
+        <strong>
+            RM <?php
+            $display_hourly_rate = $employee["salary"] / 26 / 8;
+            echo number_format($display_hourly_rate, 2);
+            ?>/hour
+        </strong>
+    </div>
+
+    <div class="calculation-item">
+        <span>Overtime Multiplier</span>
+        <strong>1.5×</strong>
+    </div>
+
+    <div class="calculation-item">
+        <span>OT Hourly Rate</span>
+        <strong>
+            RM <?php
+            $display_ot_hourly_rate =
+                ($employee["salary"] / 26 / 8) * 1.5;
+
+            echo number_format($display_ot_hourly_rate, 2);
+            ?>/hour
+        </strong>
+    </div>
+
+</div>
+
 
                     <!-- INFORMATION BOX -->
 

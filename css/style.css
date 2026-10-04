@@ -6478,3 +6478,32 @@ body.admin-login-page {
     font-style: italic;
 }
 
+/* Overtime Calculation Information */
+
+.overtime-calculation-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #f8f9fb;
+    border: 1px solid #e3e6eb;
+    border-radius: 10px;
+}
+
+.calculation-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.calculation-item span {
+    font-size: 13px;
+    color: #667085;
+}
+
+.calculation-item strong {
+    font-size: 16px;
+    color: #222;
+}
