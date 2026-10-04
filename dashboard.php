@@ -26,7 +26,8 @@ $employee_id = $employee["id"];
 /* Total OT Hours */
 $sql = "SELECT COALESCE(SUM(hours), 0) AS total_hours
         FROM overtime_records
-        WHERE employee_id = ?";
+        WHERE employee_id = ?
+        AND status = 'Approved'";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $employee_id);
@@ -79,11 +80,11 @@ $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
 /* Recent overtime records */
+/* All overtime records */
 $sql = "SELECT date, start_time, end_time, hours, amount, status
         FROM overtime_records
         WHERE employee_id = ?
-        ORDER BY date DESC, start_time DESC
-        LIMIT 5";
+        ORDER BY date DESC, start_time DESC";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $employee_id);
