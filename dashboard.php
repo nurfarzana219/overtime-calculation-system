@@ -120,11 +120,34 @@ $recent_records = $stmt->get_result();
             </div>
         </div>
 
-        <a href="dashboard.php">Dashboard</a>
-        <a href="apply-overtime.php">Apply Overtime</a>
-        <a href="history.php">History</a>
-        <a href="profile.php">Profile</a>
-        <a href="logout.php">Logout</a>
+        <nav class="figma-nav">
+
+    <a href="dashboard.php"
+       class="figma-nav-item active">
+        Dashboard
+    </a>
+
+    <a href="apply-overtime.php"
+       class="figma-nav-item">
+        Apply Overtime
+    </a>
+
+    <a href="history.php"
+       class="figma-nav-item">
+        History
+    </a>
+
+    <a href="profile.php"
+       class="figma-nav-item">
+        Profile
+    </a>
+
+    <a href="logout.php"
+       class="figma-nav-item">
+        Logout
+    </a>
+
+</nav>
 
     </aside>
 

@@ -78,32 +78,49 @@ $recent = $conn->query($sql);
 <div class="figma-app">
 
     <!-- SIDEBAR -->
+<aside class="figma-sidebar admin-sidebar">
 
-    <aside class="figma-sidebar admin-sidebar">
+    <div class="figma-logo">
 
-        <div class="figma-logo">
-
-            <div class="logo-shield">
-                <span>⏱</span>
-            </div>
-
-            <div class="logo-text">
-                OVERTIME SYSTEM
-            </div>
-
-            <div class="admin-label">
-                ADMIN
-            </div>
-
+        <div class="logo-shield">
+            <span>⏱</span>
         </div>
 
+        <div class="logo-text">
+            OVERTIME SYSTEM
+        </div>
 
-       <a href="dashboard.php">Dashboard</a>
-       <a href="requests.php">Requests</a>
-       <a href="employees.php">Employees</a>
-       <a href="../logout.php">Logout</a> 
+        <div class="admin-label">
+            ADMIN
+        </div>
 
-    </aside>
+    </div>
+
+    <nav class="figma-nav">
+
+        <a href="dashboard.php"
+           class="figma-nav-item active">
+            Dashboard
+        </a>
+
+        <a href="requests.php"
+           class="figma-nav-item">
+            Requests
+        </a>
+
+        <a href="employees.php"
+           class="figma-nav-item">
+            Employees
+        </a>
+
+        <a href="../logout.php"
+           class="figma-nav-item">
+            Logout
+        </a>
+
+    </nav>
+
+</aside>
 
 
     <!-- MAIN -->
