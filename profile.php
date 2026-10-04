@@ -312,8 +312,14 @@ if (!$employee) {
                             <label>Phone Number</label>
 
                             <div class="profile-value">
-                                Not provided
-                            </div>
+    <?php
+    if (!empty($employee["phone"])) {
+        echo htmlspecialchars($employee["phone"]);
+    } else {
+        echo "Not provided";
+    }
+    ?>
+</div>
 
                         </div>
 
@@ -330,16 +336,24 @@ if (!$employee) {
 
                     <div class="profile-card-divider"></div>
 
+<div class="compensation-row">
 
-                    <div class="compensation-row">
+    <span>Date Joined</span>
 
-                        <span>Date Joined</span>
+    <strong>
+        <?php
+        if (!empty($employee["date_joined"])) {
+            echo date(
+                "d/m/Y",
+                strtotime($employee["date_joined"])
+            );
+        } else {
+            echo "Not provided";
+        }
+        ?>
+    </strong>
 
-                        <strong>
-                            Not provided
-                        </strong>
-
-                    </div>
+</div>
 
 
                     <div class="compensation-row">
@@ -353,15 +367,21 @@ if (!$employee) {
                     </div>
 
 
-                    <div class="compensation-row">
+          <div class="compensation-row">
 
-                        <span>Manager/Supervisor</span>
+    <span>Manager/Supervisor</span>
 
-                        <strong>
-                            Not provided
-                        </strong>
+    <strong>
+        <?php
+        if (!empty($employee["manager"])) {
+            echo htmlspecialchars($employee["manager"]);
+        } else {
+            echo "Not provided";
+        }
+        ?>
+    </strong>
 
-                    </div>
+</div>
 
 
                     <div class="compensation-row">

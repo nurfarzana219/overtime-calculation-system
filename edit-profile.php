@@ -16,13 +16,17 @@ if ($_SESSION["role"] == "admin") {
 $user_id = $_SESSION["user_id"];
 
 /* GET EMPLOYEE INFORMATION */
+/* GET EMPLOYEE INFORMATION */
 $sql = "SELECT
             users.name,
             users.email,
             employees.employee_id,
             employees.department,
             employees.position,
-            employees.salary
+            employees.salary,
+            employees.date_joined,
+            employees.manager,
+            employees.phone
         FROM users
         JOIN employees
             ON users.id = employees.user_id

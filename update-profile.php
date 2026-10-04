@@ -23,13 +23,20 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
 $user_id = $_SESSION["user_id"];
 
+/* GET FORM VALUES */
 $name = trim($_POST["name"] ?? "");
 $email = trim($_POST["email"] ?? "");
+$phone = trim($_POST["phone"] ?? "");
+$date_joined = trim($_POST["date_joined"] ?? "");
+$manager = trim($_POST["manager"] ?? "");
+
+/* EMPTY DATE = NULL */
+$date_joined = ($date_joined === "") ? null : $date_joined;
 
 
 /* VALIDATION */
 
-if ($name == "" || $email == "") {
+if ($name === "" || $email === "") {
     die("Name and email are required.");
 }
 
@@ -72,43 +79,81 @@ if ($check_result->num_rows > 0) {
 $check_stmt->close();
 
 
-/* UPDATE USER */
+/* UPDATE USER INFORMATION */
 
-$sql = "UPDATE users
-        SET name = ?, email = ?
-        WHERE id = ?";
+$user_sql = "UPDATE users
+             SET name = ?,
+                 email = ?
+             WHERE id = ?";
 
-$stmt = $conn->prepare($sql);
+$user_stmt = $conn->prepare($user_sql);
 
-if (!$stmt) {
+if (!$user_stmt) {
     die("Database error: " . $conn->error);
 }
 
-$stmt->bind_param(
+$user_stmt->bind_param(
     "ssi",
     $name,
     $email,
     $user_id
 );
 
-if ($stmt->execute()) {
+if (!$user_stmt->execute()) {
 
-    /* UPDATE SESSION NAME */
-    $_SESSION["name"] = $name;
-    $_SESSION["email"] = $email;
+    $error = $user_stmt->error;
 
-    $stmt->close();
+    $user_stmt->close();
 
-    header("Location: profile.php?updated=1");
-    exit();
-
-} else {
-
-    $error = $stmt->error;
-
-    $stmt->close();
-
-    die("Unable to update profile: " . $error);
+    die("Unable to update user profile: " . $error);
 }
+
+$user_stmt->close();
+
+
+/* UPDATE EMPLOYEE INFORMATION */
+
+$employee_sql = "UPDATE employees
+                 SET date_joined = ?,
+                     manager = ?,
+                     phone = ?
+                 WHERE user_id = ?";
+
+$employee_stmt = $conn->prepare($employee_sql);
+
+if (!$employee_stmt) {
+    die("Database error: " . $conn->error);
+}
+
+$employee_stmt->bind_param(
+    "sssi",
+    $date_joined,
+    $manager,
+    $phone,
+    $user_id
+);
+
+if (!$employee_stmt->execute()) {
+
+    $error = $employee_stmt->error;
+
+    $employee_stmt->close();
+
+    die("Unable to update employee profile: " . $error);
+}
+
+$employee_stmt->close();
+
+
+/* UPDATE SESSION */
+
+$_SESSION["name"] = $name;
+$_SESSION["email"] = $email;
+
+
+/* RETURN TO PROFILE */
+
+header("Location: profile.php?updated=1");
+exit();
 
 ?>
