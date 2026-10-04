@@ -148,7 +148,7 @@ $employees = $conn->query($sql);
             ): ?>
 
                 <div class="admin-success-message">
-                    ✓ Employee salary updated successfully.
+                    ✓ Employee details updated successfully.
                 </div>
 
             <?php endif; ?>
