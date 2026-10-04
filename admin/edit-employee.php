@@ -157,7 +157,9 @@ if (!$employee) {
                 <h2>Edit Employee</h2>
 
                 <p>
-                    Manage employee salary used for overtime calculation.
+                    <p>
+                        Manage employee professional information and salary.
+                    </p>
                 </p>
 
             </div>
@@ -245,14 +247,15 @@ if (!$employee) {
                         </label>
 
                         <input
-                            type="text"
-                            value="<?php
-                            echo htmlspecialchars(
-                                $employee["department"]
-                            );
-                            ?>"
-                            readonly
-                        >
+    type="text"
+    name="department"
+    value="<?php
+    echo htmlspecialchars(
+        $employee["department"]
+    );
+    ?>"
+    required
+>
 
                     </div>
 
@@ -266,14 +269,15 @@ if (!$employee) {
                         </label>
 
                         <input
-                            type="text"
-                            value="<?php
-                            echo htmlspecialchars(
-                                $employee["position"]
-                            );
-                            ?>"
-                            readonly
-                        >
+    type="text"
+    name="position"
+    value="<?php
+    echo htmlspecialchars(
+        $employee["position"]
+    );
+    ?>"
+    required
+>
 
                     </div>
 
@@ -345,7 +349,7 @@ if (!$employee) {
                             type="submit"
                             class="admin-save-btn"
                         >
-                            ✓ Save Salary
+                            ✓ Save Changes
                         </button>
 
                     </div>
