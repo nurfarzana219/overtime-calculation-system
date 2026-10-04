@@ -1,0 +1,19 @@
+# Database exports
+*.sql
+
+# Environment / secrets
+.env
+.env.*
+
+# Local XAMPP / temporary files
+*.log
+*.tmp
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Dependencies if added later
+vendor/
+node_modules/
